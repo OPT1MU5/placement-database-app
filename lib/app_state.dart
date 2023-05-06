@@ -47,7 +47,7 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_eduDetails');
   }
 
-  bool _isSet = false;
+  bool _isSet = true;
   bool get isSet => _isSet;
   set isSet(bool _value) {
     _isSet = _value;

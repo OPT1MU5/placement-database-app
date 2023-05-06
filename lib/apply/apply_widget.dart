@@ -410,7 +410,7 @@ class _ApplyWidgetState extends State<ApplyWidget> {
                           currentUserUid,
                           currentUserDisplayName,
                           currentUserEmail,
-                          currentUserDisplayName,
+                          currentPhoneNumber,
                           applyCompanyRecord.name!,
                           valueOrDefault(currentUserDocument?.usn, ''),
                         );

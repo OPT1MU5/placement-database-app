@@ -197,7 +197,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Completed',
+                                            'Results',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -205,17 +205,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   color: Color(0xFF57636C),
                                                   fontSize: 12.0,
                                                   fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
-                                          Text(
-                                            '12',
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Color(0xFF14181B),
-                                                  fontSize: 34.0,
-                                                  fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ],
@@ -251,7 +240,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Pending',
+                                            'CGPA',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -259,17 +248,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   color: Color(0xFF57636C),
                                                   fontSize: 12.0,
                                                   fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
-                                          Text(
-                                            '16',
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Color(0xFF14181B),
-                                                  fontSize: 34.0,
-                                                  fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ],

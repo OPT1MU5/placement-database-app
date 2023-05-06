@@ -80,8 +80,8 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
       ? Container(
           color: Colors.transparent,
           child: Image.asset(
-            'assets/images/CMRIT_A++_Logo-01.png',
-            fit: BoxFit.contain,
+            'assets/images/Screenshot_2023-05-06_at_11.59.13_AM.png',
+            fit: BoxFit.cover,
           ),
         )
       : widget.child;
