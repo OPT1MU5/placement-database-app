@@ -30,6 +30,18 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   String? get usn;
 
+  String? get selected;
+
+  String? get company;
+
+  String? get cgpa;
+
+  @BuiltValueField(wireName: 'PX')
+  String? get px;
+
+  @BuiltValueField(wireName: 'AX')
+  String? get ax;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -41,7 +53,12 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..uid = ''
     ..phoneNumber = ''
     ..addEmail = ''
-    ..usn = '';
+    ..usn = ''
+    ..selected = ''
+    ..company = ''
+    ..cgpa = ''
+    ..px = ''
+    ..ax = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -73,6 +90,11 @@ Map<String, dynamic> createUsersRecordData({
   String? phoneNumber,
   String? addEmail,
   String? usn,
+  String? selected,
+  String? company,
+  String? cgpa,
+  String? px,
+  String? ax,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -85,7 +107,12 @@ Map<String, dynamic> createUsersRecordData({
         ..createdTime = createdTime
         ..phoneNumber = phoneNumber
         ..addEmail = addEmail
-        ..usn = usn,
+        ..usn = usn
+        ..selected = selected
+        ..company = company
+        ..cgpa = cgpa
+        ..px = px
+        ..ax = ax,
     ),
   );
 

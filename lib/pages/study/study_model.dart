@@ -6,19 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class StudyModel extends FlutterFlowModel {
-  ///  State fields for stateful widgets in this page.
-
-  // State field(s) for searchField widget.
-  TextEditingController? searchFieldController;
-  String? Function(BuildContext, String?)? searchFieldControllerValidator;
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
-  void dispose() {
-    searchFieldController?.dispose();
-  }
+  void dispose() {}
 
   /// Additional helper methods are added here.
 

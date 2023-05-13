@@ -110,212 +110,225 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                             decoration: BoxDecoration(
                               color: Color(0xFFF1F4F8),
                             ),
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.vertical,
-                              children: [
-                                StreamBuilder<List<CompanyRecord>>(
-                                  stream: queryCompanyRecord(),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<CompanyRecord>
-                                        columnCompanyRecordList =
-                                        snapshot.data!;
-                                    return SingleChildScrollView(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(
-                                            columnCompanyRecordList.length,
-                                            (columnIndex) {
-                                          final columnCompanyRecord =
-                                              columnCompanyRecordList[
-                                                  columnIndex];
-                                          return ListView(
-                                            padding: EdgeInsets.zero,
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 12.0, 16.0, 0.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                      'company_details',
-                                                      queryParams: {
-                                                        'details':
-                                                            serializeParam(
-                                                          columnCompanyRecord
-                                                              .reference,
-                                                          ParamType
-                                                              .DocumentReference,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                          blurRadius: 4.0,
-                                                          color:
-                                                              Color(0x1F000000),
-                                                          offset:
-                                                              Offset(0.0, 2.0),
-                                                        )
-                                                      ],
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.0),
-                                                    ),
-                                                    child: Padding(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 8.0),
+                                    child: ListView(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      children: [
+                                        StreamBuilder<List<CompanyRecord>>(
+                                          stream: queryCompanyRecord(),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<CompanyRecord>
+                                                columnCompanyRecordList =
+                                                snapshot.data!;
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                  columnCompanyRecordList
+                                                      .length, (columnIndex) {
+                                                final columnCompanyRecord =
+                                                    columnCompanyRecordList[
+                                                        columnIndex];
+                                                return ListView(
+                                                  padding: EdgeInsets.zero,
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
+                                                                  16.0,
                                                                   12.0,
-                                                                  12.0,
-                                                                  12.0,
-                                                                  12.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            columnCompanyRecord
-                                                                .name!,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .headlineMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  color: Color(
-                                                                      0xFF14181B),
-                                                                  fontSize:
-                                                                      28.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            columnCompanyRecord
-                                                                .position!,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodySmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  color: Color(
-                                                                      0xFF57636C),
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                          ),
-                                                          Divider(
-                                                            height: 24.0,
-                                                            thickness: 1.0,
-                                                            color: Color(
-                                                                0xFFDBE2E7),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Text(
+                                                                  16.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                            'company_details',
+                                                            queryParams: {
+                                                              'details':
+                                                                  serializeParam(
                                                                 columnCompanyRecord
-                                                                    .salary!,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Outfit',
-                                                                      color: Color(
-                                                                          0xFF57636C),
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                    ),
+                                                                    .reference,
+                                                                ParamType
+                                                                    .DocumentReference,
                                                               ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Text(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width:
+                                                              double.infinity,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.white,
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 4.0,
+                                                                color: Color(
+                                                                    0x1F000000),
+                                                                offset: Offset(
+                                                                    0.0, 2.0),
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12.0,
+                                                                        12.0,
+                                                                        12.0,
+                                                                        12.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
                                                                   columnCompanyRecord
-                                                                      .location!,
+                                                                      .name!,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMedium
+                                                                      .headlineMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Outfit',
                                                                         color: Color(
                                                                             0xFF14181B),
                                                                         fontSize:
+                                                                            28.0,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                      ),
+                                                                ),
+                                                                Text(
+                                                                  columnCompanyRecord
+                                                                      .position!,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Outfit',
+                                                                        color: Color(
+                                                                            0xFF57636C),
+                                                                        fontSize:
                                                                             12.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
                                                                       ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                                Divider(
+                                                                  height: 24.0,
+                                                                  thickness:
+                                                                      1.0,
+                                                                  color: Color(
+                                                                      0xFFDBE2E7),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      columnCompanyRecord
+                                                                          .salary!,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF57636C),
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          4.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        columnCompanyRecord
+                                                                            .location!,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Outfit',
+                                                                              color: Color(0xFF14181B),
+                                                                              fontSize: 12.0,
+                                                                              fontWeight: FontWeight.normal,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ],
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        }),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ],
+                                                  ],
+                                                );
+                                              }),
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Container(

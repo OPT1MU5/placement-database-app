@@ -24,7 +24,6 @@ class _StudyWidgetState extends State<StudyWidget> {
     super.initState();
     _model = createModel(context, () => StudyModel());
 
-    _model.searchFieldController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -45,14 +44,17 @@ class _StudyWidgetState extends State<StudyWidget> {
       appBar: AppBar(
         backgroundColor: Color(0xFF4B39EF),
         automaticallyImplyLeading: false,
-        title: Text(
-          'Study Materials',
-          style: FlutterFlowTheme.of(context).displaySmall.override(
-                fontFamily: 'Lexend Deca',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 26.0,
-                fontWeight: FontWeight.bold,
-              ),
+        title: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
+          child: Text(
+            'Study Materials',
+            style: FlutterFlowTheme.of(context).displaySmall.override(
+                  fontFamily: 'Lexend Deca',
+                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                  fontSize: 26.0,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
         ),
         actions: [],
         centerTitle: false,
@@ -69,7 +71,7 @@ class _StudyWidgetState extends State<StudyWidget> {
                 elevation: 0.0,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 1.0,
-                  height: 60.0,
+                  height: 18.0,
                   decoration: BoxDecoration(
                     color: Color(0xFF4B39EF),
                     boxShadow: [
@@ -79,65 +81,6 @@ class _StudyWidgetState extends State<StudyWidget> {
                         offset: Offset(0.0, 2.0),
                       )
                     ],
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
-                    child: TextFormField(
-                      controller: _model.searchFieldController,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Type to search here...',
-                        hintStyle:
-                            FlutterFlowTheme.of(context).bodySmall.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFF95A1AC),
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFF1F4F8),
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search_rounded,
-                          color: Color(0xFF95A1AC),
-                        ),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Color(0xFF090F13),
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.normal,
-                          ),
-                      maxLines: null,
-                      validator: _model.searchFieldControllerValidator
-                          .asValidator(context),
-                    ),
                   ),
                 ),
               ),

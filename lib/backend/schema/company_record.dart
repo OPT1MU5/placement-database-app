@@ -36,6 +36,8 @@ abstract class CompanyRecord
 
   BuiltList<String>? get skills;
 
+  BuiltList<String>? get selectedStu;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -51,7 +53,8 @@ abstract class CompanyRecord
     ..status = ''
     ..rounds = ListBuilder()
     ..description = ''
-    ..skills = ListBuilder();
+    ..skills = ListBuilder()
+    ..selectedStu = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('company');
@@ -99,7 +102,8 @@ Map<String, dynamic> createCompanyRecordData({
         ..status = status
         ..rounds = null
         ..description = description
-        ..skills = null,
+        ..skills = null
+        ..selectedStu = null,
     ),
   );
 

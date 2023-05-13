@@ -75,6 +75,41 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.selected;
+    if (value != null) {
+      result
+        ..add('selected')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.company;
+    if (value != null) {
+      result
+        ..add('company')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.cgpa;
+    if (value != null) {
+      result
+        ..add('cgpa')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.px;
+    if (value != null) {
+      result
+        ..add('PX')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.ax;
+    if (value != null) {
+      result
+        ..add('AX')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -129,6 +164,26 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.usn = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'selected':
+          result.selected = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'company':
+          result.company = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'cgpa':
+          result.cgpa = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'PX':
+          result.px = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'AX':
+          result.ax = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -160,6 +215,16 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? usn;
   @override
+  final String? selected;
+  @override
+  final String? company;
+  @override
+  final String? cgpa;
+  @override
+  final String? px;
+  @override
+  final String? ax;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -174,6 +239,11 @@ class _$UsersRecord extends UsersRecord {
       this.phoneNumber,
       this.addEmail,
       this.usn,
+      this.selected,
+      this.company,
+      this.cgpa,
+      this.px,
+      this.ax,
       this.ffRef})
       : super._();
 
@@ -196,6 +266,11 @@ class _$UsersRecord extends UsersRecord {
         phoneNumber == other.phoneNumber &&
         addEmail == other.addEmail &&
         usn == other.usn &&
+        selected == other.selected &&
+        company == other.company &&
+        cgpa == other.cgpa &&
+        px == other.px &&
+        ax == other.ax &&
         ffRef == other.ffRef;
   }
 
@@ -210,6 +285,11 @@ class _$UsersRecord extends UsersRecord {
     _$hash = $jc(_$hash, phoneNumber.hashCode);
     _$hash = $jc(_$hash, addEmail.hashCode);
     _$hash = $jc(_$hash, usn.hashCode);
+    _$hash = $jc(_$hash, selected.hashCode);
+    _$hash = $jc(_$hash, company.hashCode);
+    _$hash = $jc(_$hash, cgpa.hashCode);
+    _$hash = $jc(_$hash, px.hashCode);
+    _$hash = $jc(_$hash, ax.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -226,6 +306,11 @@ class _$UsersRecord extends UsersRecord {
           ..add('phoneNumber', phoneNumber)
           ..add('addEmail', addEmail)
           ..add('usn', usn)
+          ..add('selected', selected)
+          ..add('company', company)
+          ..add('cgpa', cgpa)
+          ..add('px', px)
+          ..add('ax', ax)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -266,6 +351,26 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? get usn => _$this._usn;
   set usn(String? usn) => _$this._usn = usn;
 
+  String? _selected;
+  String? get selected => _$this._selected;
+  set selected(String? selected) => _$this._selected = selected;
+
+  String? _company;
+  String? get company => _$this._company;
+  set company(String? company) => _$this._company = company;
+
+  String? _cgpa;
+  String? get cgpa => _$this._cgpa;
+  set cgpa(String? cgpa) => _$this._cgpa = cgpa;
+
+  String? _px;
+  String? get px => _$this._px;
+  set px(String? px) => _$this._px = px;
+
+  String? _ax;
+  String? get ax => _$this._ax;
+  set ax(String? ax) => _$this._ax = ax;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -285,6 +390,11 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _phoneNumber = $v.phoneNumber;
       _addEmail = $v.addEmail;
       _usn = $v.usn;
+      _selected = $v.selected;
+      _company = $v.company;
+      _cgpa = $v.cgpa;
+      _px = $v.px;
+      _ax = $v.ax;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -316,6 +426,11 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             phoneNumber: phoneNumber,
             addEmail: addEmail,
             usn: usn,
+            selected: selected,
+            company: company,
+            cgpa: cgpa,
+            px: px,
+            ax: ax,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

@@ -207,6 +207,23 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 3.0, 0.0, 0.0),
+                                            child: Text(
+                                              homeUsersRecord.cgpa!,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF090F13),
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -240,7 +257,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'CGPA',
+                                            'Eligibility',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -249,6 +266,98 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   fontSize: 12.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 3.0, 0.0, 0.0),
+                                            child: Text(
+                                              homeUsersRecord.px!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            Color(0xFF090F13),
+                                                      ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 3.0, 0.0, 0.0),
+                                            child: Text(
+                                              homeUsersRecord.ax!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            Color(0xFF090F13),
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 0.0, 12.0),
+                                  child: Container(
+                                    width: 140.0,
+                                    height: 140.0,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x1F000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 12.0, 12.0, 12.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Selected',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: Color(0xFF57636C),
+                                                  fontSize: 12.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 3.0, 0.0, 0.0),
+                                            child: Text(
+                                              homeUsersRecord.company!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            Color(0xFF090F13),
+                                                        fontSize: 16.0,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),

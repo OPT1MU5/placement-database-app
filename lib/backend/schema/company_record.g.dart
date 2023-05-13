@@ -99,6 +99,14 @@ class _$CompanyRecordSerializer implements StructuredSerializer<CompanyRecord> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    value = object.selectedStu;
+    if (value != null) {
+      result
+        ..add('selectedStu')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -170,6 +178,12 @@ class _$CompanyRecordSerializer implements StructuredSerializer<CompanyRecord> {
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
+        case 'selectedStu':
+          result.selectedStu.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -207,6 +221,8 @@ class _$CompanyRecord extends CompanyRecord {
   @override
   final BuiltList<String>? skills;
   @override
+  final BuiltList<String>? selectedStu;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$CompanyRecord([void Function(CompanyRecordBuilder)? updates]) =>
@@ -224,6 +240,7 @@ class _$CompanyRecord extends CompanyRecord {
       this.rounds,
       this.description,
       this.skills,
+      this.selectedStu,
       this.ffRef})
       : super._();
 
@@ -249,6 +266,7 @@ class _$CompanyRecord extends CompanyRecord {
         rounds == other.rounds &&
         description == other.description &&
         skills == other.skills &&
+        selectedStu == other.selectedStu &&
         ffRef == other.ffRef;
   }
 
@@ -266,6 +284,7 @@ class _$CompanyRecord extends CompanyRecord {
     _$hash = $jc(_$hash, rounds.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, skills.hashCode);
+    _$hash = $jc(_$hash, selectedStu.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -285,6 +304,7 @@ class _$CompanyRecord extends CompanyRecord {
           ..add('rounds', rounds)
           ..add('description', description)
           ..add('skills', skills)
+          ..add('selectedStu', selectedStu)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -341,6 +361,12 @@ class CompanyRecordBuilder
       _$this._skills ??= new ListBuilder<String>();
   set skills(ListBuilder<String>? skills) => _$this._skills = skills;
 
+  ListBuilder<String>? _selectedStu;
+  ListBuilder<String> get selectedStu =>
+      _$this._selectedStu ??= new ListBuilder<String>();
+  set selectedStu(ListBuilder<String>? selectedStu) =>
+      _$this._selectedStu = selectedStu;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -363,6 +389,7 @@ class CompanyRecordBuilder
       _rounds = $v.rounds?.toBuilder();
       _description = $v.description;
       _skills = $v.skills?.toBuilder();
+      _selectedStu = $v.selectedStu?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -399,6 +426,7 @@ class CompanyRecordBuilder
               rounds: _rounds?.build(),
               description: description,
               skills: _skills?.build(),
+              selectedStu: _selectedStu?.build(),
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -408,6 +436,8 @@ class CompanyRecordBuilder
 
         _$failedField = 'skills';
         _skills?.build();
+        _$failedField = 'selectedStu';
+        _selectedStu?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'CompanyRecord', _$failedField, e.toString());
