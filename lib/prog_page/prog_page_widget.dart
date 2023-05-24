@@ -154,7 +154,7 @@ class _ProgPageWidgetState extends State<ProgPageWidget> {
                                           children: [
                                             Text(
                                               listViewStudyMaterialsRecord
-                                                  .topic!,
+                                                  .topic,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .titleMedium
@@ -188,7 +188,7 @@ class _ProgPageWidgetState extends State<ProgPageWidget> {
                                           onPressed: () async {
                                             await launchURL(
                                                 listViewStudyMaterialsRecord
-                                                    .pdf!);
+                                                    .pdf);
                                             setState(() {
                                               FFAppState().icon =
                                                   Color(0xFF3FD850);

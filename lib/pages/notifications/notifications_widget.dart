@@ -229,7 +229,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                               children: [
                                                                 Text(
                                                                   columnCompanyRecord
-                                                                      .name!,
+                                                                      .name,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineMedium
@@ -246,7 +246,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                                 ),
                                                                 Text(
                                                                   columnCompanyRecord
-                                                                      .position!,
+                                                                      .position,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodySmall
@@ -275,7 +275,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                                   children: [
                                                                     Text(
                                                                       columnCompanyRecord
-                                                                          .salary!,
+                                                                          .salary,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodySmall
@@ -299,7 +299,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                                       child:
                                                                           Text(
                                                                         columnCompanyRecord
-                                                                            .location!,
+                                                                            .location,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -440,7 +440,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                           children: [
                                                             Text(
                                                               columnCompanyRecord
-                                                                  .name!,
+                                                                  .name,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .headlineMedium
@@ -458,7 +458,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             ),
                                                             Text(
                                                               columnCompanyRecord
-                                                                  .position!,
+                                                                  .position,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodySmall
@@ -487,7 +487,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                               children: [
                                                                 Text(
                                                                   columnCompanyRecord
-                                                                      .salary!,
+                                                                      .salary,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodySmall
@@ -511,7 +511,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                                           0.0),
                                                                   child: Text(
                                                                     columnCompanyRecord
-                                                                        .location!,
+                                                                        .location,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -654,7 +654,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                           children: [
                                                             Text(
                                                               columnCompanyRecord
-                                                                  .name!,
+                                                                  .name,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .headlineMedium
@@ -672,7 +672,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             ),
                                                             Text(
                                                               columnCompanyRecord
-                                                                  .position!,
+                                                                  .position,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodySmall
@@ -701,7 +701,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                               children: [
                                                                 Text(
                                                                   columnCompanyRecord
-                                                                      .salary!,
+                                                                      .salary,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodySmall
@@ -725,7 +725,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                                           0.0),
                                                                   child: Text(
                                                                     columnCompanyRecord
-                                                                        .location!,
+                                                                        .location,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium

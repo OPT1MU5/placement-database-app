@@ -1,62 +1,77 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'registered_students_record.g.dart';
+class RegisteredStudentsRecord extends FirestoreRecord {
+  RegisteredStudentsRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class RegisteredStudentsRecord
-    implements
-        Built<RegisteredStudentsRecord, RegisteredStudentsRecordBuilder> {
-  static Serializer<RegisteredStudentsRecord> get serializer =>
-      _$registeredStudentsRecordSerializer;
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
 
-  String? get email;
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
 
-  @BuiltValueField(wireName: 'display_name')
-  String? get displayName;
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
 
-  @BuiltValueField(wireName: 'phone_number')
-  String? get phoneNumber;
+  // "companyN" field.
+  String? _companyN;
+  String get companyN => _companyN ?? '';
+  bool hasCompanyN() => _companyN != null;
 
-  String? get companyN;
+  // "usn" field.
+  String? _usn;
+  String get usn => _usn ?? '';
+  bool hasUsn() => _usn != null;
 
-  String? get usn;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(RegisteredStudentsRecordBuilder builder) =>
-      builder
-        ..email = ''
-        ..displayName = ''
-        ..phoneNumber = ''
-        ..companyN = ''
-        ..usn = '';
+  void _initializeFields() {
+    _email = snapshotData['email'] as String?;
+    _displayName = snapshotData['display_name'] as String?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
+    _companyN = snapshotData['companyN'] as String?;
+    _usn = snapshotData['usn'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('registered_students');
 
   static Stream<RegisteredStudentsRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.snapshots().map((s) => RegisteredStudentsRecord.fromSnapshot(s));
 
   static Future<RegisteredStudentsRecord> getDocumentOnce(
           DocumentReference ref) =>
-      ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.get().then((s) => RegisteredStudentsRecord.fromSnapshot(s));
 
-  RegisteredStudentsRecord._();
-  factory RegisteredStudentsRecord(
-          [void Function(RegisteredStudentsRecordBuilder) updates]) =
-      _$RegisteredStudentsRecord;
+  static RegisteredStudentsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      RegisteredStudentsRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static RegisteredStudentsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      RegisteredStudentsRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'RegisteredStudentsRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createRegisteredStudentsRecordData({
@@ -66,16 +81,14 @@ Map<String, dynamic> createRegisteredStudentsRecordData({
   String? companyN,
   String? usn,
 }) {
-  final firestoreData = serializers.toFirestore(
-    RegisteredStudentsRecord.serializer,
-    RegisteredStudentsRecord(
-      (r) => r
-        ..email = email
-        ..displayName = displayName
-        ..phoneNumber = phoneNumber
-        ..companyN = companyN
-        ..usn = usn,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'email': email,
+      'display_name': displayName,
+      'phone_number': phoneNumber,
+      'companyN': companyN,
+      'usn': usn,
+    }.withoutNulls,
   );
 
   return firestoreData;

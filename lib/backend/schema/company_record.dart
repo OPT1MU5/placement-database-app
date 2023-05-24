@@ -1,80 +1,118 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'company_record.g.dart';
+class CompanyRecord extends FirestoreRecord {
+  CompanyRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class CompanyRecord
-    implements Built<CompanyRecord, CompanyRecordBuilder> {
-  static Serializer<CompanyRecord> get serializer => _$companyRecordSerializer;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
 
-  String? get name;
+  // "position" field.
+  String? _position;
+  String get position => _position ?? '';
+  bool hasPosition() => _position != null;
 
-  String? get position;
+  // "salary" field.
+  String? _salary;
+  String get salary => _salary ?? '';
+  bool hasSalary() => _salary != null;
 
-  String? get salary;
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
 
-  String? get type;
+  // "location" field.
+  String? _location;
+  String get location => _location ?? '';
+  bool hasLocation() => _location != null;
 
-  String? get location;
+  // "PX_eligibility" field.
+  String? _pXEligibility;
+  String get pXEligibility => _pXEligibility ?? '';
+  bool hasPXEligibility() => _pXEligibility != null;
 
-  @BuiltValueField(wireName: 'PX_eligibility')
-  String? get pXEligibility;
+  // "A_eligibilty" field.
+  String? _aEligibilty;
+  String get aEligibilty => _aEligibilty ?? '';
+  bool hasAEligibilty() => _aEligibilty != null;
 
-  @BuiltValueField(wireName: 'A_eligibilty')
-  String? get aEligibilty;
+  // "Status" field.
+  String? _status;
+  String get status => _status ?? '';
+  bool hasStatus() => _status != null;
 
-  @BuiltValueField(wireName: 'Status')
-  String? get status;
+  // "Rounds" field.
+  List<String>? _rounds;
+  List<String> get rounds => _rounds ?? const [];
+  bool hasRounds() => _rounds != null;
 
-  @BuiltValueField(wireName: 'Rounds')
-  BuiltList<String>? get rounds;
+  // "description" field.
+  String? _description;
+  String get description => _description ?? '';
+  bool hasDescription() => _description != null;
 
-  String? get description;
+  // "skills" field.
+  List<String>? _skills;
+  List<String> get skills => _skills ?? const [];
+  bool hasSkills() => _skills != null;
 
-  BuiltList<String>? get skills;
+  // "selectedStu" field.
+  List<String>? _selectedStu;
+  List<String> get selectedStu => _selectedStu ?? const [];
+  bool hasSelectedStu() => _selectedStu != null;
 
-  BuiltList<String>? get selectedStu;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(CompanyRecordBuilder builder) => builder
-    ..name = ''
-    ..position = ''
-    ..salary = ''
-    ..type = ''
-    ..location = ''
-    ..pXEligibility = ''
-    ..aEligibilty = ''
-    ..status = ''
-    ..rounds = ListBuilder()
-    ..description = ''
-    ..skills = ListBuilder()
-    ..selectedStu = ListBuilder();
+  void _initializeFields() {
+    _name = snapshotData['name'] as String?;
+    _position = snapshotData['position'] as String?;
+    _salary = snapshotData['salary'] as String?;
+    _type = snapshotData['type'] as String?;
+    _location = snapshotData['location'] as String?;
+    _pXEligibility = snapshotData['PX_eligibility'] as String?;
+    _aEligibilty = snapshotData['A_eligibilty'] as String?;
+    _status = snapshotData['Status'] as String?;
+    _rounds = getDataList(snapshotData['Rounds']);
+    _description = snapshotData['description'] as String?;
+    _skills = getDataList(snapshotData['skills']);
+    _selectedStu = getDataList(snapshotData['selectedStu']);
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('company');
 
-  static Stream<CompanyRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<CompanyRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => CompanyRecord.fromSnapshot(s));
 
-  static Future<CompanyRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<CompanyRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => CompanyRecord.fromSnapshot(s));
 
-  CompanyRecord._();
-  factory CompanyRecord([void Function(CompanyRecordBuilder) updates]) =
-      _$CompanyRecord;
+  static CompanyRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      CompanyRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static CompanyRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      CompanyRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'CompanyRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createCompanyRecordData({
@@ -88,23 +126,18 @@ Map<String, dynamic> createCompanyRecordData({
   String? status,
   String? description,
 }) {
-  final firestoreData = serializers.toFirestore(
-    CompanyRecord.serializer,
-    CompanyRecord(
-      (c) => c
-        ..name = name
-        ..position = position
-        ..salary = salary
-        ..type = type
-        ..location = location
-        ..pXEligibility = pXEligibility
-        ..aEligibilty = aEligibilty
-        ..status = status
-        ..rounds = null
-        ..description = description
-        ..skills = null
-        ..selectedStu = null,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'name': name,
+      'position': position,
+      'salary': salary,
+      'type': type,
+      'location': location,
+      'PX_eligibility': pXEligibility,
+      'A_eligibilty': aEligibilty,
+      'Status': status,
+      'description': description,
+    }.withoutNulls,
   );
 
   return firestoreData;

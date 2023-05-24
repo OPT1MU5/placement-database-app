@@ -152,6 +152,7 @@ class _ApplyWidgetState extends State<ApplyWidget> {
             ),
           ),
           body: SafeArea(
+            top: true,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -174,7 +175,7 @@ class _ApplyWidgetState extends State<ApplyWidget> {
                       }
                       final textCompanyRecord = snapshot.data!;
                       return Text(
-                        textCompanyRecord.name!,
+                        textCompanyRecord.name,
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(
@@ -189,7 +190,7 @@ class _ApplyWidgetState extends State<ApplyWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 15.0),
                   child: Text(
-                    applyCompanyRecord.position!,
+                    applyCompanyRecord.position,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
                           color: Color(0xFF090F13),
@@ -411,7 +412,7 @@ class _ApplyWidgetState extends State<ApplyWidget> {
                           currentUserDisplayName,
                           currentUserEmail,
                           currentPhoneNumber,
-                          applyCompanyRecord.name!,
+                          applyCompanyRecord.name,
                           valueOrDefault(currentUserDocument?.usn, ''),
                         );
                         await showDialog(
@@ -431,7 +432,7 @@ class _ApplyWidgetState extends State<ApplyWidget> {
                         );
                         triggerPushNotification(
                           notificationTitle: 'Application Submitted!',
-                          notificationText: applyCompanyRecord.name!,
+                          notificationText: applyCompanyRecord.name,
                           userRefs: [currentUserReference!],
                           initialPageName: 'company_details',
                           parameterData: {

@@ -132,6 +132,7 @@ class _EduDetails1WidgetState extends State<EduDetails1Widget> {
         ),
       ),
       body: SafeArea(
+        top: true,
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,

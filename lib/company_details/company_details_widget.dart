@@ -93,6 +93,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -165,7 +166,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              columnCompanyRecord.name!,
+                                              columnCompanyRecord.name,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .headlineSmall
@@ -210,7 +211,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: AutoSizeText(
-                                        columnCompanyRecord.position!,
+                                        columnCompanyRecord.position,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
@@ -251,7 +252,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
-                                        columnCompanyRecord.salary!,
+                                        columnCompanyRecord.salary,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
@@ -292,7 +293,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
-                                        columnCompanyRecord.type!,
+                                        columnCompanyRecord.type,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
@@ -333,7 +334,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
-                                        columnCompanyRecord.location!,
+                                        columnCompanyRecord.location,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
@@ -377,7 +378,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            columnCompanyRecord.pXEligibility!,
+                                            columnCompanyRecord.pXEligibility,
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium
                                                 .override(
@@ -399,7 +400,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                                 ),
                                           ),
                                           Text(
-                                            columnCompanyRecord.aEligibilty!,
+                                            columnCompanyRecord.aEligibilty,
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium
                                                 .override(
@@ -439,9 +440,8 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                     ),
                                     Builder(
                                       builder: (context) {
-                                        final skills = columnCompanyRecord
-                                            .skills!
-                                            .toList();
+                                        final skills =
+                                            columnCompanyRecord.skills.toList();
                                         return Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: List.generate(skills.length,
@@ -501,7 +501,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                       child: Builder(
                                         builder: (context) {
                                           final rounds = columnCompanyRecord
-                                              .rounds!
+                                              .rounds
                                               .toList();
                                           return Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -561,7 +561,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: AutoSizeText(
-                                        columnCompanyRecord.description!,
+                                        columnCompanyRecord.description,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -577,10 +577,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                 ),
                               ),
                             ),
-                            if (columnCompanyRecord.selectedStu!
-                                    .toList()
-                                    .length >=
-                                1)
+                            if (columnCompanyRecord.selectedStu.length >= 1)
                               Align(
                                 alignment: AlignmentDirectional(-0.8, 0.0),
                                 child: Padding(
@@ -605,7 +602,7 @@ class _CompanyDetailsWidgetState extends State<CompanyDetailsWidget> {
                                       Builder(
                                         builder: (context) {
                                           final selectedstu =
-                                              columnCompanyRecord.selectedStu!
+                                              columnCompanyRecord.selectedStu
                                                   .toList();
                                           return Column(
                                             mainAxisSize: MainAxisSize.max,

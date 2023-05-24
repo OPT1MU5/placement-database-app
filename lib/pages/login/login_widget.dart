@@ -338,7 +338,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     return;
                                   }
 
-                                  context.pushNamedAuth('Home', mounted);
+                                  context.pushNamedAuth(
+                                      'Home', context.mounted);
                                 },
                                 text: 'Login',
                                 options: FFButtonOptions(
@@ -409,7 +410,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     return;
                                   }
 
-                                  context.goNamedAuth('Home', mounted);
+                                  context.goNamedAuth('Home', context.mounted);
                                 },
                                 child: Container(
                                   width: 50.0,

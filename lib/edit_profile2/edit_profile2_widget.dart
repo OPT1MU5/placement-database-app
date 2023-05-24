@@ -132,6 +132,7 @@ class _EditProfile2WidgetState extends State<EditProfile2Widget> {
         ),
       ),
       body: SafeArea(
+        top: true,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [

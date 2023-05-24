@@ -1,51 +1,64 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'practice_test_record.g.dart';
+class PracticeTestRecord extends FirestoreRecord {
+  PracticeTestRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class PracticeTestRecord
-    implements Built<PracticeTestRecord, PracticeTestRecordBuilder> {
-  static Serializer<PracticeTestRecord> get serializer =>
-      _$practiceTestRecordSerializer;
+  // "topic" field.
+  String? _topic;
+  String get topic => _topic ?? '';
+  bool hasTopic() => _topic != null;
 
-  String? get topic;
+  // "links" field.
+  String? _links;
+  String get links => _links ?? '';
+  bool hasLinks() => _links != null;
 
-  String? get links;
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
 
-  String? get type;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(PracticeTestRecordBuilder builder) => builder
-    ..topic = ''
-    ..links = ''
-    ..type = '';
+  void _initializeFields() {
+    _topic = snapshotData['topic'] as String?;
+    _links = snapshotData['links'] as String?;
+    _type = snapshotData['type'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('practice_test');
 
-  static Stream<PracticeTestRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<PracticeTestRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => PracticeTestRecord.fromSnapshot(s));
 
   static Future<PracticeTestRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.get().then((s) => PracticeTestRecord.fromSnapshot(s));
 
-  PracticeTestRecord._();
-  factory PracticeTestRecord(
-          [void Function(PracticeTestRecordBuilder) updates]) =
-      _$PracticeTestRecord;
+  static PracticeTestRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      PracticeTestRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static PracticeTestRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      PracticeTestRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'PracticeTestRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createPracticeTestRecordData({
@@ -53,14 +66,12 @@ Map<String, dynamic> createPracticeTestRecordData({
   String? links,
   String? type,
 }) {
-  final firestoreData = serializers.toFirestore(
-    PracticeTestRecord.serializer,
-    PracticeTestRecord(
-      (p) => p
-        ..topic = topic
-        ..links = links
-        ..type = type,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'topic': topic,
+      'links': links,
+      'type': type,
+    }.withoutNulls,
   );
 
   return firestoreData;

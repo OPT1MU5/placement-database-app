@@ -1,87 +1,123 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'edu_k_y_c_record.g.dart';
+class EduKYCRecord extends FirestoreRecord {
+  EduKYCRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class EduKYCRecord
-    implements Built<EduKYCRecord, EduKYCRecordBuilder> {
-  static Serializer<EduKYCRecord> get serializer => _$eduKYCRecordSerializer;
+  // "usn" field.
+  String? _usn;
+  String get usn => _usn ?? '';
+  bool hasUsn() => _usn != null;
 
-  String? get usn;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
 
-  String? get name;
+  // "School_Name" field.
+  String? _schoolName;
+  String get schoolName => _schoolName ?? '';
+  bool hasSchoolName() => _schoolName != null;
 
-  @BuiltValueField(wireName: 'School_Name')
-  String? get schoolName;
+  // "Grade10_marks" field.
+  String? _grade10Marks;
+  String get grade10Marks => _grade10Marks ?? '';
+  bool hasGrade10Marks() => _grade10Marks != null;
 
-  @BuiltValueField(wireName: 'Grade10_marks')
-  String? get grade10Marks;
+  // "markscard_10" field.
+  String? _markscard10;
+  String get markscard10 => _markscard10 ?? '';
+  bool hasMarkscard10() => _markscard10 != null;
 
-  @BuiltValueField(wireName: 'markscard_10')
-  String? get markscard10;
+  // "board_10" field.
+  String? _board10;
+  String get board10 => _board10 ?? '';
+  bool hasBoard10() => _board10 != null;
 
-  @BuiltValueField(wireName: 'board_10')
-  String? get board10;
+  // "regNum_10" field.
+  String? _regNum10;
+  String get regNum10 => _regNum10 ?? '';
+  bool hasRegNum10() => _regNum10 != null;
 
-  @BuiltValueField(wireName: 'regNum_10')
-  String? get regNum10;
+  // "cType" field.
+  String? _cType;
+  String get cType => _cType ?? '';
+  bool hasCType() => _cType != null;
 
-  String? get cType;
+  // "cName" field.
+  String? _cName;
+  String get cName => _cName ?? '';
+  bool hasCName() => _cName != null;
 
-  String? get cName;
+  // "grade12_marks" field.
+  String? _grade12Marks;
+  String get grade12Marks => _grade12Marks ?? '';
+  bool hasGrade12Marks() => _grade12Marks != null;
 
-  @BuiltValueField(wireName: 'grade12_marks')
-  String? get grade12Marks;
+  // "board12" field.
+  String? _board12;
+  String get board12 => _board12 ?? '';
+  bool hasBoard12() => _board12 != null;
 
-  String? get board12;
+  // "CregNum" field.
+  String? _cregNum;
+  String get cregNum => _cregNum ?? '';
+  bool hasCregNum() => _cregNum != null;
 
-  @BuiltValueField(wireName: 'CregNum')
-  String? get cregNum;
+  // "markscard_12" field.
+  String? _markscard12;
+  String get markscard12 => _markscard12 ?? '';
+  bool hasMarkscard12() => _markscard12 != null;
 
-  @BuiltValueField(wireName: 'markscard_12')
-  String? get markscard12;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(EduKYCRecordBuilder builder) => builder
-    ..usn = ''
-    ..name = ''
-    ..schoolName = ''
-    ..grade10Marks = ''
-    ..markscard10 = ''
-    ..board10 = ''
-    ..regNum10 = ''
-    ..cType = ''
-    ..cName = ''
-    ..grade12Marks = ''
-    ..board12 = ''
-    ..cregNum = ''
-    ..markscard12 = '';
+  void _initializeFields() {
+    _usn = snapshotData['usn'] as String?;
+    _name = snapshotData['name'] as String?;
+    _schoolName = snapshotData['School_Name'] as String?;
+    _grade10Marks = snapshotData['Grade10_marks'] as String?;
+    _markscard10 = snapshotData['markscard_10'] as String?;
+    _board10 = snapshotData['board_10'] as String?;
+    _regNum10 = snapshotData['regNum_10'] as String?;
+    _cType = snapshotData['cType'] as String?;
+    _cName = snapshotData['cName'] as String?;
+    _grade12Marks = snapshotData['grade12_marks'] as String?;
+    _board12 = snapshotData['board12'] as String?;
+    _cregNum = snapshotData['CregNum'] as String?;
+    _markscard12 = snapshotData['markscard_12'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('edu_KYC');
 
-  static Stream<EduKYCRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<EduKYCRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => EduKYCRecord.fromSnapshot(s));
 
-  static Future<EduKYCRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<EduKYCRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => EduKYCRecord.fromSnapshot(s));
 
-  EduKYCRecord._();
-  factory EduKYCRecord([void Function(EduKYCRecordBuilder) updates]) =
-      _$EduKYCRecord;
+  static EduKYCRecord fromSnapshot(DocumentSnapshot snapshot) => EduKYCRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static EduKYCRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      EduKYCRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'EduKYCRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createEduKYCRecordData({
@@ -99,24 +135,22 @@ Map<String, dynamic> createEduKYCRecordData({
   String? cregNum,
   String? markscard12,
 }) {
-  final firestoreData = serializers.toFirestore(
-    EduKYCRecord.serializer,
-    EduKYCRecord(
-      (e) => e
-        ..usn = usn
-        ..name = name
-        ..schoolName = schoolName
-        ..grade10Marks = grade10Marks
-        ..markscard10 = markscard10
-        ..board10 = board10
-        ..regNum10 = regNum10
-        ..cType = cType
-        ..cName = cName
-        ..grade12Marks = grade12Marks
-        ..board12 = board12
-        ..cregNum = cregNum
-        ..markscard12 = markscard12,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'usn': usn,
+      'name': name,
+      'School_Name': schoolName,
+      'Grade10_marks': grade10Marks,
+      'markscard_10': markscard10,
+      'board_10': board10,
+      'regNum_10': regNum10,
+      'cType': cType,
+      'cName': cName,
+      'grade12_marks': grade12Marks,
+      'board12': board12,
+      'CregNum': cregNum,
+      'markscard_12': markscard12,
+    }.withoutNulls,
   );
 
   return firestoreData;

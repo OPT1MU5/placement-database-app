@@ -1,51 +1,64 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'study_materials_record.g.dart';
+class StudyMaterialsRecord extends FirestoreRecord {
+  StudyMaterialsRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class StudyMaterialsRecord
-    implements Built<StudyMaterialsRecord, StudyMaterialsRecordBuilder> {
-  static Serializer<StudyMaterialsRecord> get serializer =>
-      _$studyMaterialsRecordSerializer;
+  // "topic" field.
+  String? _topic;
+  String get topic => _topic ?? '';
+  bool hasTopic() => _topic != null;
 
-  String? get topic;
+  // "pdf" field.
+  String? _pdf;
+  String get pdf => _pdf ?? '';
+  bool hasPdf() => _pdf != null;
 
-  String? get pdf;
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
 
-  String? get type;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(StudyMaterialsRecordBuilder builder) => builder
-    ..topic = ''
-    ..pdf = ''
-    ..type = '';
+  void _initializeFields() {
+    _topic = snapshotData['topic'] as String?;
+    _pdf = snapshotData['pdf'] as String?;
+    _type = snapshotData['type'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('study_materials');
 
-  static Stream<StudyMaterialsRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<StudyMaterialsRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => StudyMaterialsRecord.fromSnapshot(s));
 
   static Future<StudyMaterialsRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.get().then((s) => StudyMaterialsRecord.fromSnapshot(s));
 
-  StudyMaterialsRecord._();
-  factory StudyMaterialsRecord(
-          [void Function(StudyMaterialsRecordBuilder) updates]) =
-      _$StudyMaterialsRecord;
+  static StudyMaterialsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      StudyMaterialsRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static StudyMaterialsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      StudyMaterialsRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'StudyMaterialsRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createStudyMaterialsRecordData({
@@ -53,14 +66,12 @@ Map<String, dynamic> createStudyMaterialsRecordData({
   String? pdf,
   String? type,
 }) {
-  final firestoreData = serializers.toFirestore(
-    StudyMaterialsRecord.serializer,
-    StudyMaterialsRecord(
-      (s) => s
-        ..topic = topic
-        ..pdf = pdf
-        ..type = type,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'topic': topic,
+      'pdf': pdf,
+      'type': type,
+    }.withoutNulls,
   );
 
   return firestoreData;

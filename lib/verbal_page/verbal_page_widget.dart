@@ -154,7 +154,7 @@ class _VerbalPageWidgetState extends State<VerbalPageWidget> {
                                           children: [
                                             Text(
                                               listViewStudyMaterialsRecord
-                                                  .topic!,
+                                                  .topic,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .titleMedium
@@ -188,7 +188,7 @@ class _VerbalPageWidgetState extends State<VerbalPageWidget> {
                                           onPressed: () async {
                                             await launchURL(
                                                 listViewStudyMaterialsRecord
-                                                    .pdf!);
+                                                    .pdf);
                                             setState(() {
                                               FFAppState().icon =
                                                   FlutterFlowTheme.of(context)

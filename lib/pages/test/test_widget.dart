@@ -203,7 +203,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                                     0.0),
                                                         child: Text(
                                                           listViewPracticeTestRecord
-                                                              .topic!,
+                                                              .topic,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleMedium
@@ -234,7 +234,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                   onTap: () async {
                                                     await launchURL(
                                                         listViewPracticeTestRecord
-                                                            .links!);
+                                                            .links);
                                                   },
                                                   child: Icon(
                                                     Icons
@@ -344,7 +344,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             columnPracticeTestRecord
-                                                                .topic!,
+                                                                .topic,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .titleMedium
@@ -378,7 +378,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                     onPressed: () async {
                                                       await launchURL(
                                                           columnPracticeTestRecord
-                                                              .links!);
+                                                              .links);
                                                     },
                                                   ),
                                                 ],
@@ -480,7 +480,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                                     0.0),
                                                         child: Text(
                                                           columnPracticeTestRecord
-                                                              .topic!,
+                                                              .topic,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleMedium

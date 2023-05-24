@@ -157,7 +157,7 @@ class _QuantPageWidgetState extends State<QuantPageWidget> {
                                               children: [
                                                 Text(
                                                   listViewStudyMaterialsRecord
-                                                      .topic!,
+                                                      .topic,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .titleMedium
@@ -193,7 +193,7 @@ class _QuantPageWidgetState extends State<QuantPageWidget> {
                                               onPressed: () async {
                                                 await launchURL(
                                                     listViewStudyMaterialsRecord
-                                                        .pdf!);
+                                                        .pdf);
                                               },
                                             ),
                                           ],

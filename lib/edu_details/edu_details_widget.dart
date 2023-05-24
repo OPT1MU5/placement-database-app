@@ -127,6 +127,7 @@ class _EduDetailsWidgetState extends State<EduDetailsWidget> {
         ),
       ),
       body: SafeArea(
+        top: true,
         child: StreamBuilder<EduKYCRecord>(
           stream: EduKYCRecord.getDocument(FFAppState().eduDetails!),
           builder: (context, snapshot) {

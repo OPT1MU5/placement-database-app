@@ -393,7 +393,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('Edit_Profile', mounted);
+                              context.goNamedAuth(
+                                  'Edit_Profile', context.mounted);
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(
@@ -463,7 +464,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('Home', mounted);
+                              context.goNamedAuth('Home', context.mounted);
                             },
                             child: Container(
                               width: 50.0,
