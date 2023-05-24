@@ -386,129 +386,130 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ),
                           );
                         }
-                        List<CompanyRecord> listViewCompanyRecordList =
+                        List<CompanyRecord> columnCompanyRecordList =
                             snapshot.data!;
-                        return ListView.builder(
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount: listViewCompanyRecordList.length,
-                          itemBuilder: (context, listViewIndex) {
-                            final listViewCompanyRecord =
-                                listViewCompanyRecordList[listViewIndex];
-                            return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 12.0, 16.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'company_details',
-                                    queryParams: {
-                                      'details': serializeParam(
-                                        listViewCompanyRecord.reference,
-                                        ParamType.DocumentReference,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x1F000000),
-                                        offset: Offset(0.0, 2.0),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 12.0, 12.0, 12.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          listViewCompanyRecord.name,
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineMedium
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF14181B),
-                                                fontSize: 28.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
+                        return SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: List.generate(
+                                columnCompanyRecordList.length, (columnIndex) {
+                              final columnCompanyRecord =
+                                  columnCompanyRecordList[columnIndex];
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 12.0, 16.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'company_details',
+                                      queryParams: {
+                                        'details': serializeParam(
+                                          columnCompanyRecord.reference,
+                                          ParamType.DocumentReference,
                                         ),
-                                        Text(
-                                          listViewCompanyRecord.position,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 12.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                        Divider(
-                                          height: 24.0,
-                                          thickness: 1.0,
-                                          color: Color(0xFFDBE2E7),
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              listViewCompanyRecord.location,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            Color(0xFF57636C),
-                                                        fontSize: 12.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                listViewCompanyRecord.salary,
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x1F000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 12.0, 12.0, 12.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            columnCompanyRecord.name,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineMedium
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: Color(0xFF14181B),
+                                                  fontSize: 28.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                          Text(
+                                            columnCompanyRecord.position,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: Color(0xFF57636C),
+                                                  fontSize: 12.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                          Divider(
+                                            height: 24.0,
+                                            thickness: 1.0,
+                                            color: Color(0xFFDBE2E7),
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                columnCompanyRecord.location,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
-                                                              Color(0xFF14181B),
+                                                              Color(0xFF57636C),
                                                           fontSize: 12.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  columnCompanyRecord.salary,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            Color(0xFF14181B),
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            }),
+                          ),
                         );
                       },
                     ),
